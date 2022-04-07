@@ -55,59 +55,30 @@ public class Taulell {
     }
 
     public void displayTaulell() {
-        for (int i = 0; i < caselles[0].length; i++) {
-            for (int j = 0; j < caselles.length; j++) {
-                if (j == caselles.length - 1) {
-                    System.out.print("+---+\n");
-                } else {
-                    System.out.print("+---");
-                }
-            }
-            for (int j = 0; j < caselles.length; j++) {
+        int fila = 0;
+        int columna = 0;
 
-                caselles[0][0].setBandera(true);
-                caselles[1][0].setBandera(true);
-                caselles[0][1].setBandera(true);
-
-                if (caselles[i][j].isDestapada()) {
-                    if (j == caselles.length - 1) {
-                        System.out.print(" | " + caselles[i][j].getValor() + " |\n");
-                    } else if (j == 0) {
-                        System.out.print("| " + caselles[i][j].getValor());
-                    } else {
-                        System.out.print(" | " + caselles[i][j].getValor());
-                    }
-                } else if (caselles[i][j].isBandera()) {
-                    if (j == caselles.length - 1) {
-                        System.out.print(" |" + " B " + "|\n");
-                    } else if (j == 0) {
-                        System.out.print("|" + " B ");
-                    } else {
-                        System.out.print("|" + " B ");
-                    }
-                } else {
-                    if (j == caselles.length - 1) {
-                        System.out.print("|" + "[ ]" + "|\n");
-                    } else if (j == 0) {
-                        System.out.print("|" + "[ ]");
-                    } else {
-                        System.out.print("|" + "[ ]");
-                    }
-                }
-            }
-
-            if (i == caselles[0].length - 1) { //Darrera línea d'abaix
-                for (int j = 0; j < caselles.length; j++) {
-                    if (j == caselles.length - 1) {
-                        System.out.print("+---+\n");
-                    } else {
-                        System.out.print("+---");
-                    }
-                }
-            }
+        System.out.print("     ");
+        for(columna=0; columna<caselles[0].length; columna++){
+            System.out.print("  " + columna + "  ");
         }
+        System.out.println();
 
-        System.out.println("\n\n\n");
+        for (int i = 0; i < caselles.length; i++) {
+            System.out.print("  " + fila + "  ");
+            fila++;
+            for (int j = 0; j < caselles[0].length; j++) {
+                if (caselles[i][j].isDestapada()) {
+                    System.out.print("[ " + caselles[i][j].getValor() + " ]");
+                } else if (caselles[i][j].isBandera()) {
+                    System.out.print("[ B ]");
+                } else {
+                    System.out.print("[   ]");
+                }
+            }
+            caselles[0][0].setBandera(true);
+            System.out.println();
+        }
     }
 
     private void assignarValorCaselles() { //ordre: esquerra, adalt, dreta, abaix i diagonals començant per adalt a l'esquerra
@@ -134,7 +105,7 @@ public class Taulell {
                 if (i != caselles.length - 1 && j != caselles[0].length - 1 && caselles[i + 1][j + 1].isMina()) {
                     caselles[i][j].setValor(caselles[i][j].getValor() + 1);
                 }
-                if (i != 0 && j != caselles[0].length - 1  && caselles[i - 1][j + 1].isMina()) {
+                if (i != 0 && j != caselles[0].length - 1 && caselles[i - 1][j + 1].isMina()) {
                     caselles[i][j].setValor(caselles[i][j].getValor() + 1);
                 }
             }
