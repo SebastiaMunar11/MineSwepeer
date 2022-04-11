@@ -108,7 +108,7 @@ public class Taulell {
                 System.out.print("  " + columna + " ");
             }
         }
-        System.out.println();
+        System.out.println("   banderes -> [ " + banderes + " ]");
 
         for (int i = 0; i < caselles.length; i++) {
             if (fila < 10) {
@@ -207,6 +207,11 @@ public class Taulell {
             if (fila != caselles.length - 1 && columna != caselles[0].length - 1 && !caselles[fila + 1][columna + 1].isDestapada()) {
                 destaparCasella(fila + 1, columna + 1);
             }
+        }
+
+        if(caselles[fila][columna].isBandera()){
+            caselles[fila][columna].setBandera(false);
+            banderes++;
         }
     }
 }
