@@ -41,6 +41,11 @@ public class Menu {
         System.exit(0);
     }
 
+    public void perdre(Taulell taulell) {
+        System.out.println("LLÀSTIMA, HAS PERDUT!!");
+        taulell.displayMines();
+    }
+
 
 
 

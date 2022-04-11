@@ -4,12 +4,12 @@ public class Main {
 
         Menu mainmenu = new Menu();
 
-        mainmenu.guanyar();
-
         mainmenu.setDificultat();
 
         Taulell taulell = new Taulell(mainmenu.getDificultat());
         taulell.displayTaulell();
+
+        mainmenu.perdre(taulell);
     }
 
 
