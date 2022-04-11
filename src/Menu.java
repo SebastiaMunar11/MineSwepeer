@@ -9,6 +9,7 @@ public class Menu {
     private Taulell taulell;
     private boolean isInici = true;
 
+
     public Menu() {
         titol();
         setDificultat();

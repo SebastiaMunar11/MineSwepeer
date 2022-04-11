@@ -173,7 +173,7 @@ public class Taulell {
     }
 
     public void llevarBandera(int fila, int columna) {
-        if (!caselles[fila][columna].isDestapada() && caselles[columna][fila].isBandera()) {
+        if (caselles[fila][columna].isBandera()) {
             caselles[fila][columna].setBandera(false);
             banderes++;
         }
