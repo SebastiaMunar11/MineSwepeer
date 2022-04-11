@@ -86,9 +86,51 @@ public class Taulell {
                     System.out.print("[   ]");
                 }
             }
-            caselles[0][0].setBandera(true);
             System.out.println();
         }
+
+        System.out.println();
+    }
+
+    public void displayMines(){
+        int fila = 0;
+        int columna = 0;
+
+        System.out.print("     ");
+        for(columna=0; columna<caselles[0].length; columna++){
+            if(columna<10) {
+                System.out.print("  " + columna + "  ");
+            }
+            else{
+                System.out.print("  " + columna + " ");
+            }
+        }
+        System.out.println();
+
+        for (int i = 0; i < caselles.length; i++) {
+            if(fila<10) {
+                System.out.print("  " + fila + "  ");
+            }
+            else{
+                System.out.print("  " + fila + " ");
+            }
+            fila++;
+            for (int j = 0; j < caselles[0].length; j++) {
+                if(caselles[i][j].isMina()){
+                    System.out.print("[ " + "M" + " ]");
+                }
+                else if (caselles[i][j].isDestapada()) {
+                    System.out.print("[ " + caselles[i][j].getValor() + " ]");
+                } else if (caselles[i][j].isBandera()) {
+                    System.out.print("[ B ]");
+                } else {
+                    System.out.print("[   ]");
+                }
+            }
+            System.out.println();
+        }
+
+        System.out.println();
     }
 
     private void assignarValorCaselles() { //ordre: esquerra, adalt, dreta, abaix i diagonals començant per adalt a l'esquerra
