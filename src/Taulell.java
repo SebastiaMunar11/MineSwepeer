@@ -163,4 +163,16 @@ public class Taulell {
             }
         }
     }
+
+    public void posarBandera(int fila, int columna){
+        if(!caselles[columna][fila].isDestapada()) {
+            caselles[columna][fila].setBandera(true);
+        }
+    }
+
+    public void llevarBandera(int fila, int columna){
+        if(!caselles[columna][fila].isDestapada() && caselles[columna][fila].isBandera()){
+            caselles[columna][fila].setBandera(false);
+        }
+    }
 }
