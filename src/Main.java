@@ -3,18 +3,17 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Scanner sc = new Scanner(System.in);
         Menu mainmenu = new Menu();
+        mainmenu.getTaulell().displayTaulell();
+        mainmenu.demanarAccio();
+        while(true){
+            mainmenu.getTaulell().displayTaulell();
+            mainmenu.demanarAccio();
+            mainmenu.comprovarDerrota();
+            mainmenu.comprovarVictoria();
+        }
 
-        mainmenu.setDificultat();
 
-        Taulell taulell = new Taulell(mainmenu.getDificultat());
-
-        taulell.displayMines();
-
-        taulell.destaparCasella(sc.nextInt(), sc.nextInt());
-
-        taulell.displayMines();
 
     }
 

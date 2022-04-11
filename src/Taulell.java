@@ -1,3 +1,5 @@
+import java.util.InputMismatchException;
+
 public class Taulell {
 
     private Casella[][] caselles;
@@ -171,10 +173,10 @@ public class Taulell {
         }
     }
 
-    public void destaparCasella(int fila, int columna) {
+    public void destaparCasella (int fila, int columna) throws ArrayIndexOutOfBoundsException, InputMismatchException {
         caselles[fila][columna].setDestapada(true);
 
-        if (caselles[fila][columna].getValor() == 0) {//ordre: esquerra, adalt, dreta, abaix i diagonals començant per adalt a l'esquerra
+        if (caselles[fila][columna].getValor() == 0 && !caselles[fila][columna].isMina()) {//ordre: esquerra, adalt, dreta, abaix i diagonals començant per adalt a l'esquerra
             if (fila != 0 && !caselles[fila - 1][columna].isDestapada()) {
                 destaparCasella(fila - 1, columna);
             }
