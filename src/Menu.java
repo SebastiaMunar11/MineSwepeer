@@ -69,22 +69,23 @@ public class Menu {
         try {
 
             while (accio != 1 && accio != 2 && accio!= 3) {
-                accio = sc.nextInt();
+                Scanner sc1 = new Scanner(System.in);
+                accio = sc1.nextInt();
 
                 switch (accio) {
                     case 1:
                         System.out.println("Fila:");
-                        fila = sc.nextInt();
+                        fila = sc1.nextInt();
                         System.out.println("Columna:");
-                        columna = sc.nextInt();
+                        columna = sc1.nextInt();
                         taulell.posarBandera(fila, columna);
                         break;
 
                     case 2:
                         System.out.println("Fila:");
-                        fila = sc.nextInt();
+                        fila = sc1.nextInt();
                         System.out.println("Columna:");
-                        columna = sc.nextInt();
+                        columna = sc1.nextInt();
                         if (isInici) {
                             while (taulell.getCaselles()[fila][columna].getValor() != 0 || taulell.getCaselles()[fila][columna].isMina()) {
                                 this.taulell = new Taulell(getDificultat());
@@ -96,9 +97,9 @@ public class Menu {
 
                     case 3:
                         System.out.println("Fila:");
-                        fila = sc.nextInt();
+                        fila = sc1.nextInt();
                         System.out.println("Columna:");
-                        columna = sc.nextInt();
+                        columna = sc1.nextInt();
                         taulell.llevarBandera(fila, columna);
                         break;
 
@@ -108,9 +109,9 @@ public class Menu {
             }
         } catch (ArrayIndexOutOfBoundsException e) {
             System.out.println("Casella inexistent");
-        } catch (InputMismatchException e) {
-            System.out.println("Informació invàlida");
-
+        }
+        catch (InputMismatchException e){
+            System.out.println("Informació Invàlida");
         }
     }
 

@@ -165,14 +165,14 @@ public class Taulell {
         }
     }
 
-    public void posarBandera(int fila, int columna) {
+    public void posarBandera(int fila, int columna) throws ArrayIndexOutOfBoundsException, InputMismatchException{
         if (!caselles[fila][columna].isDestapada() && !caselles[fila][columna].isBandera()) {
             caselles[fila][columna].setBandera(true);
             banderes--;
         }
     }
 
-    public void llevarBandera(int fila, int columna) {
+    public void llevarBandera(int fila, int columna) throws ArrayIndexOutOfBoundsException, InputMismatchException{
         if (caselles[fila][columna].isBandera()) {
             caselles[fila][columna].setBandera(false);
             banderes++;
