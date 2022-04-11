@@ -4,20 +4,24 @@ public class Taulell {
 
     private Casella[][] caselles;
     private int mines;
+    private int banderes;
 
     public Taulell(String dificultat) {
         switch (dificultat) {
             case "dificil" -> {
                 caselles = new Casella[16][32];
                 mines = 99;
+                banderes = 99;
             }
             case "intermig" -> {
                 caselles = new Casella[16][16];
                 mines = 40;
+                banderes = 40;
             }
             case "facil" -> {
                 caselles = new Casella[8][8];
                 mines = 10;
+                banderes = 10;
             }
         }
         omplirCaselles();
@@ -68,7 +72,7 @@ public class Taulell {
                 System.out.print("  " + columna + " ");
             }
         }
-        System.out.println();
+        System.out.println("   banderes -> [ " + banderes + " ]");
 
         for (int i = 0; i < caselles.length; i++) {
             if (fila < 10) {
@@ -162,18 +166,20 @@ public class Taulell {
     }
 
     public void posarBandera(int fila, int columna) {
-        if (!caselles[fila][columna].isDestapada()) {
+        if (!caselles[fila][columna].isDestapada() && !caselles[fila][columna].isBandera()) {
             caselles[fila][columna].setBandera(true);
+            banderes--;
         }
     }
 
     public void llevarBandera(int fila, int columna) {
         if (!caselles[fila][columna].isDestapada() && caselles[columna][fila].isBandera()) {
             caselles[fila][columna].setBandera(false);
+            banderes++;
         }
     }
 
-    public void destaparCasella (int fila, int columna) throws ArrayIndexOutOfBoundsException, InputMismatchException {
+    public void destaparCasella(int fila, int columna) throws ArrayIndexOutOfBoundsException, InputMismatchException {
         caselles[fila][columna].setDestapada(true);
 
         if (caselles[fila][columna].getValor() == 0 && !caselles[fila][columna].isMina()) {//ordre: esquerra, adalt, dreta, abaix i diagonals començant per adalt a l'esquerra
