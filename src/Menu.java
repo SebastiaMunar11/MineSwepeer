@@ -37,8 +37,11 @@ public class Menu {
     }
 
     public void guanyar() {
-        System.out.println();
+        System.out.println("EHORABONA, HAS GUANYAT!!");
+        System.exit(0);
     }
+
+
 
 
 }
