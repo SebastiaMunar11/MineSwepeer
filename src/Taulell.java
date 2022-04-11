@@ -59,21 +59,19 @@ public class Taulell {
         int columna = 0;
 
         System.out.print("     ");
-        for(columna=0; columna<caselles[0].length; columna++){
-            if(columna<10) {
+        for (columna = 0; columna < caselles[0].length; columna++) {
+            if (columna < 10) {
                 System.out.print("  " + columna + "  ");
-            }
-            else{
+            } else {
                 System.out.print("  " + columna + " ");
             }
         }
         System.out.println();
 
         for (int i = 0; i < caselles.length; i++) {
-            if(fila<10) {
+            if (fila < 10) {
                 System.out.print("  " + fila + "  ");
-            }
-            else{
+            } else {
                 System.out.print("  " + fila + " ");
             }
             fila++;
@@ -92,34 +90,31 @@ public class Taulell {
         System.out.println();
     }
 
-    public void displayMines(){
+    public void displayMines() {
         int fila = 0;
         int columna = 0;
 
         System.out.print("     ");
-        for(columna=0; columna<caselles[0].length; columna++){
-            if(columna<10) {
+        for (columna = 0; columna < caselles[0].length; columna++) {
+            if (columna < 10) {
                 System.out.print("  " + columna + "  ");
-            }
-            else{
+            } else {
                 System.out.print("  " + columna + " ");
             }
         }
         System.out.println();
 
         for (int i = 0; i < caselles.length; i++) {
-            if(fila<10) {
+            if (fila < 10) {
                 System.out.print("  " + fila + "  ");
-            }
-            else{
+            } else {
                 System.out.print("  " + fila + " ");
             }
             fila++;
             for (int j = 0; j < caselles[0].length; j++) {
-                if(caselles[i][j].isMina()){
+                if (caselles[i][j].isMina()) {
                     System.out.print("[ " + "M" + " ]");
-                }
-                else if (caselles[i][j].isDestapada()) {
+                } else if (caselles[i][j].isDestapada()) {
                     System.out.print("[ " + caselles[i][j].getValor() + " ]");
                 } else if (caselles[i][j].isBandera()) {
                     System.out.print("[ B ]");
@@ -164,15 +159,46 @@ public class Taulell {
         }
     }
 
-    public void posarBandera(int fila, int columna){
-        if(!caselles[columna][fila].isDestapada()) {
-            caselles[columna][fila].setBandera(true);
+    public void posarBandera(int fila, int columna) {
+        if (!caselles[fila][columna].isDestapada()) {
+            caselles[fila][columna].setBandera(true);
         }
     }
 
-    public void llevarBandera(int fila, int columna){
-        if(!caselles[columna][fila].isDestapada() && caselles[columna][fila].isBandera()){
-            caselles[columna][fila].setBandera(false);
+    public void llevarBandera(int fila, int columna) {
+        if (!caselles[fila][columna].isDestapada() && caselles[columna][fila].isBandera()) {
+            caselles[fila][columna].setBandera(false);
+        }
+    }
+
+    public void destaparCasella(int fila, int columna) {
+        caselles[fila][columna].setDestapada(true);
+
+        if (caselles[fila][columna].getValor() == 0) {//ordre: esquerra, adalt, dreta, abaix i diagonals començant per adalt a l'esquerra
+            if (fila != 0 && !caselles[fila - 1][columna].isDestapada()) {
+                destaparCasella(fila - 1, columna);
+            }
+            if (columna != 0 && !caselles[fila][columna - 1].isDestapada()) {
+                destaparCasella(fila, columna - 1);
+            }
+            if (fila != caselles.length - 1 && !caselles[fila + 1][columna].isDestapada()) {
+                destaparCasella(fila + 1, columna);
+            }
+            if (columna != caselles[0].length - 1 && !caselles[fila][columna + 1].isDestapada()) {
+                destaparCasella(fila, columna + 1);
+            }
+            if (fila != 0 && columna != 0 && !caselles[fila - 1][columna - 1].isDestapada()) {
+                destaparCasella(fila - 1, columna - 1);
+            }
+            if (fila != caselles.length - 1 && columna != 0 && !caselles[fila + 1][columna - 1].isDestapada()) {
+                destaparCasella(fila + 1, columna - 1);
+            }
+            if (fila != 0 && columna != caselles[0].length - 1 && !caselles[fila - 1][columna + 1].isDestapada()) {
+                destaparCasella(fila - 1, columna + 1);
+            }
+            if (fila != caselles.length - 1 && columna != caselles[0].length - 1 && !caselles[fila + 1][columna + 1].isDestapada()) {
+                destaparCasella(fila + 1, columna + 1);
+            }
         }
     }
 }
