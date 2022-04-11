@@ -60,12 +60,22 @@ public class Taulell {
 
         System.out.print("     ");
         for(columna=0; columna<caselles[0].length; columna++){
-            System.out.print("  " + columna + "  ");
+            if(columna<10) {
+                System.out.print("  " + columna + "  ");
+            }
+            else{
+                System.out.print("  " + columna + " ");
+            }
         }
         System.out.println();
 
         for (int i = 0; i < caselles.length; i++) {
-            System.out.print("  " + fila + "  ");
+            if(fila<10) {
+                System.out.print("  " + fila + "  ");
+            }
+            else{
+                System.out.print("  " + fila + " ");
+            }
             fila++;
             for (int j = 0; j < caselles[0].length; j++) {
                 if (caselles[i][j].isDestapada()) {

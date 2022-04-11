@@ -2,8 +2,11 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Taulell taulell= new Taulell("facil");
+        Menu mainmenu = new Menu();
 
+        mainmenu.setDificultat();
+
+        Taulell taulell = new Taulell(mainmenu.getDificultat());
         taulell.displayTaulell();
     }
 
