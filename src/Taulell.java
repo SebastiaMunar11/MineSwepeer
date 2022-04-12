@@ -45,7 +45,7 @@ public class Taulell {
         while (mines != 0) {
             for (int i = 0; i < caselles.length; i++) {
                 for (int j = 0; j < caselles[0].length; j++) {
-                    if (Math.round(Math.random() * 10) == 5) {
+                    if (Math.round(Math.random() * 10) == 5 && !caselles[i][j].isMina()) {
                         caselles[i][j].setMina(true);
                         mines--;
                     }
